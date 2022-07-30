@@ -1,5 +1,15 @@
-# module code
 
+# imports
+import os
+
+# module code
+def PyLogInit():
+    try:
+        logFile = open("LOGFILE.log", "w")
+    except:
+        print("Couldn't create log file.")
+    finally:
+        logFile.close()
 
 def PyLog(LogMessage) -> str:
     try:
@@ -38,3 +48,9 @@ def PyLogClear():
             logFile.close()
     except:
         print("Something went wrong when opening the file")
+
+def PyLogDel():
+    if os.path.exists("LOGFILE.log"):
+        os.remove("LOGFILE.log")
+    else:
+        print("File doesn't exist.")
